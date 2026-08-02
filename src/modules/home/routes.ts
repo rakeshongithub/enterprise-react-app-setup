@@ -3,14 +3,16 @@ import { defineRoute } from "../../router";
 
 const homeRoutes = [
   defineRoute({
+    id: "home",
     path: "/",
     component: () => import("./HomePage"),
-    options: {
+    meta: {
+      title: "Home",
+      breadcrumb: "Home",
+      layout: DefaultLayout,
       nav: {
         label: "Home",
-      },
-      layout: {
-        Component: DefaultLayout,
+        order: 1,
       },
     },
   }),

@@ -1,12 +1,4 @@
-import type { ImportComponent, RouteOptions } from "./types";
-
-export interface RouteDefinition {
-  path: string;
-
-  component: ImportComponent;
-
-  options?: RouteOptions;
-}
+import { type RouteDefinition } from "./types";
 
 export function defineRoute(route: RouteDefinition): RouteDefinition {
   return route;

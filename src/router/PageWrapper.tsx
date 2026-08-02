@@ -8,9 +8,9 @@ interface Props {
 }
 
 export default function PageWrapper({ route }: Props) {
-  const { Component, options } = route;
+  const { Component, meta } = route;
 
-  const Layout = options?.layout?.Component ?? BlankLayout;
+  const Layout = meta?.layout ?? BlankLayout;
 
   let page = (
     <LoadingBoundary>
@@ -20,7 +20,7 @@ export default function PageWrapper({ route }: Props) {
     </LoadingBoundary>
   );
 
-  if (options?.requiresAuth) {
+  if (meta?.requiresAuth) {
     page = <ProtectedRoute>{page}</ProtectedRoute>;
   }
 

@@ -5,35 +5,70 @@ import {
   type ReactNode,
 } from "react";
 
+/**
+ * Lazy imported page module.
+ */
 export interface RouteModule {
   default: ComponentType<any>;
 }
 
 export type ImportComponent = () => Promise<RouteModule>;
 
-export interface NavOptions {
+/**
+ * Navigation metadata.
+ */
+export interface NavigationMeta {
   label: string;
   icon?: ReactNode;
+  order?: number;
+  /**
+   * Used to build grouped navigation.
+   *
+   * Example:
+   *
+   * ["Administration"]
+   *
+   * or
+   *
+   * ["Administration","Identity"]
+   */
+  hierarchy?: string[];
+  /**
+   * Hide from navigation.
+   */
+  visible?: boolean;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-empty-object-type
-export interface LayoutProps {}
-
-export interface LayoutOptions {
-  Component?: ComponentType<any>;
-  propsFactory?: () => LayoutProps;
-}
-
-export interface RouteOptions {
-  nav?: NavOptions;
-  layout?: LayoutOptions;
+/**
+ * Route metadata.
+ */
+export interface RouteMeta {
+  title?: string;
+  breadcrumb?: string | ((params: Record<string, string>) => string);
+  layout?: ComponentType<any>;
   requiresAuth?: boolean;
   permissions?: string[];
   roles?: string[];
+  featureFlag?: string;
+  nav?: NavigationMeta;
 }
 
+/**
+ * Route Definition
+ */
+export interface RouteDefinition {
+  id: string;
+  path: string;
+  component: ImportComponent;
+  meta?: RouteMeta;
+}
+
+/**
+ * Internal Route
+ */
 export interface ManagedRoute {
+  id: string;
   path: string;
   Component: LazyExoticComponent<ComponentType<any>>;
-  options?: RouteOptions;
+  meta?: RouteMeta;
 }

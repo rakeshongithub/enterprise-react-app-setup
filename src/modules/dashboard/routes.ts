@@ -3,16 +3,19 @@ import { defineRoute } from "../../router";
 
 const dashboardRoutes = [
   defineRoute({
+    id: "dashboard",
     path: "/dashboard",
     component: () => import("./DashboardPage"),
-    options: {
+    meta: {
+      title: "Dashboard",
+      breadcrumb: "Dashboard",
+      layout: DefaultLayout,
+      requiresAuth: true,
+      permissions: ["dashboard:view"],
       nav: {
         label: "Dashboard",
+        order: 2,
       },
-      layout: {
-        Component: DefaultLayout,
-      },
-      requiresAuth: true,
     },
   }),
 ];
