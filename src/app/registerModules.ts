@@ -1,6 +1,8 @@
-import "../modules/home/routes";
-import "../modules/dashboard/routes";
+import homeRoutes from "../modules/home/routes";
+import dashboardRoutes from "../modules/dashboard/routes";
+
+import { routeRegistry } from "../router";
 
 export function registerModules() {
-  // Imports execute on module load.
+  routeRegistry.register([...homeRoutes, ...dashboardRoutes]);
 }

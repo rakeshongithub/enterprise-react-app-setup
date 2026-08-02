@@ -1,24 +1,23 @@
 import { lazy } from "react";
-import type { ImportComponent, ManagedRoute, RouteOptions } from "./types";
+import { type ManagedRoute } from "./types";
+import { type RouteDefinition } from "./defineRoute";
 
 class RouteRegistry {
   private readonly routes: ManagedRoute[] = [];
 
-  register(
-    path: string,
-    importComponent: ImportComponent,
-    options?: RouteOptions,
-  ) {
-    const exists = this.routes.some((r) => r.path === path);
+  register(routes: RouteDefinition[]) {
+    routes.forEach((route) => {
+      const exists = this.routes.some((r) => r.path === route.path);
 
-    if (exists) {
-      throw new Error(`Route "${path}" already exists.`);
-    }
+      if (exists) {
+        throw new Error(`Duplicate route "${route.path}"`);
+      }
 
-    this.routes.push({
-      path,
-      Component: lazy(importComponent),
-      options,
+      this.routes.push({
+        path: route.path,
+        Component: lazy(route.component),
+        options: route.options,
+      });
     });
   }
 

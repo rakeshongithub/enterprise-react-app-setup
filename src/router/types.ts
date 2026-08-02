@@ -9,8 +9,11 @@ export interface RouteModule {
   default: ComponentType<any>;
 }
 
+export type ImportComponent = () => Promise<RouteModule>;
+
 export interface NavOptions {
   label: string;
+
   icon?: ReactNode;
 }
 
@@ -25,6 +28,8 @@ export interface LayoutOptions {
 export interface RouteOptions {
   nav?: NavOptions;
   layout?: LayoutOptions;
+  requiresAuth?: boolean;
+  permissions?: string[];
 }
 
 export interface ManagedRoute {
@@ -32,5 +37,3 @@ export interface ManagedRoute {
   Component: LazyExoticComponent<ComponentType<any>>;
   options?: RouteOptions;
 }
-
-export type ImportComponent = () => Promise<RouteModule>;

@@ -1,11 +1,19 @@
 import DefaultLayout from "../../layouts/DefaultLayout";
-import { routeRegistry } from "../../router";
+import { defineRoute } from "../../router";
 
-routeRegistry.register("/", () => import("./HomePage"), {
-  layout: {
-    Component: DefaultLayout,
-  },
-  nav: {
-    label: "Home",
-  },
-});
+const homeRoutes = [
+  defineRoute({
+    path: "/",
+    component: () => import("./HomePage"),
+    options: {
+      nav: {
+        label: "Home",
+      },
+      layout: {
+        Component: DefaultLayout,
+      },
+    },
+  }),
+];
+
+export default homeRoutes;

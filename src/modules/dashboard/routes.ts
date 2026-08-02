@@ -1,11 +1,20 @@
 import DefaultLayout from "../../layouts/DefaultLayout";
-import { routeRegistry } from "../../router";
+import { defineRoute } from "../../router";
 
-routeRegistry.register("/dashboard", () => import("./DashboardPage"), {
-  layout: {
-    Component: DefaultLayout,
-  },
-  nav: {
-    label: "Dashboard",
-  },
-});
+const dashboardRoutes = [
+  defineRoute({
+    path: "/dashboard",
+    component: () => import("./DashboardPage"),
+    options: {
+      nav: {
+        label: "Dashboard",
+      },
+      layout: {
+        Component: DefaultLayout,
+      },
+      requiresAuth: true,
+    },
+  }),
+];
+
+export default dashboardRoutes;
