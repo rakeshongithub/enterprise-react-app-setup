@@ -1,5 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { type LazyExoticComponent, type ComponentType } from "react";
+import {
+  type ComponentType,
+  type LazyExoticComponent,
+  type ReactNode,
+} from "react";
 
 export interface RouteModule {
   default: ComponentType<any>;
@@ -7,11 +11,15 @@ export interface RouteModule {
 
 export interface NavOptions {
   label: string;
-  icon?: React.ReactNode;
+  icon?: ReactNode;
 }
+
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
+export interface LayoutProps {}
 
 export interface LayoutOptions {
   Component?: ComponentType<any>;
+  propsFactory?: () => LayoutProps;
 }
 
 export interface RouteOptions {

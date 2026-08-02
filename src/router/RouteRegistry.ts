@@ -2,7 +2,7 @@ import { lazy } from "react";
 import type { ImportComponent, ManagedRoute, RouteOptions } from "./types";
 
 class RouteRegistry {
-  private routes: ManagedRoute[] = [];
+  private readonly routes: ManagedRoute[] = [];
 
   register(
     path: string,

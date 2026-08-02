@@ -1,17 +1,30 @@
-import { Suspense } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
+import BlankLayout from "../layouts/BlankLayout";
+import LoadingBoundary from "./LoadingBoundary";
 import { routeRegistry } from "./RouteRegistry";
 
 export default function RouteManager() {
   const routes = routeRegistry.getRoutes();
 
   return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <Routes>
-        {routes.map(({ path, Component }) => (
-          <Route key={path} path={path} element={<Component />} />
-        ))}
-      </Routes>
-    </Suspense>
+    <Routes>
+      {routes.map(({ path, Component, options }) => {
+        const Layout = options?.layout?.Component ?? BlankLayout;
+
+        return (
+          <Route
+            key={path}
+            path={path}
+            element={
+              <LoadingBoundary>
+                <Layout>
+                  <Component />
+                </Layout>
+              </LoadingBoundary>
+            }
+          />
+        );
+      })}
+    </Routes>
   );
 }
