@@ -13,7 +13,6 @@ export type ImportComponent = () => Promise<RouteModule>;
 
 export interface NavOptions {
   label: string;
-
   icon?: ReactNode;
 }
 
@@ -30,6 +29,7 @@ export interface RouteOptions {
   layout?: LayoutOptions;
   requiresAuth?: boolean;
   permissions?: string[];
+  roles?: string[];
 }
 
 export interface ManagedRoute {
