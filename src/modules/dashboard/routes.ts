@@ -14,7 +14,8 @@ const dashboardRoutes = [
       permissions: ["dashboard:view"],
       nav: {
         label: "Dashboard",
-        order: 2,
+        order: 1,
+        hierarchy: ["General"],
       },
     },
   }),

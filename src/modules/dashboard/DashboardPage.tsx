@@ -1,3 +1,12 @@
+import { useBreadcrumbs } from "../../router";
+
 export default function DashboardPage() {
-  return <h2>Dashboard</h2>;
+  const breadcrumbs = useBreadcrumbs();
+  return (
+    <div>
+      <h1>Dashboard</h1>
+
+      <pre>{JSON.stringify(breadcrumbs, null, 2)}</pre>
+    </div>
+  );
 }

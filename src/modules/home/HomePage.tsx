@@ -1,7 +1,13 @@
+import { useBreadcrumbs } from "../../router";
+
 export default function HomePage() {
+  const breadcrumbs = useBreadcrumbs();
+
   return (
-    <div style={{ padding: 40 }}>
-      <h1>Home Page</h1>
+    <div>
+      <h1>Home</h1>
+
+      <pre>{JSON.stringify(breadcrumbs, null, 2)}</pre>
     </div>
   );
 }

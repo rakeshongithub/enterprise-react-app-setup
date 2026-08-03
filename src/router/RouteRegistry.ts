@@ -5,8 +5,12 @@ import { type ManagedRoute, type RouteDefinition } from "./types";
 class RouteRegistry {
   private readonly routes: ManagedRoute[] = [];
 
+  private readonly definitions: RouteDefinition[] = [];
+
   register(routes: RouteDefinition[]) {
+    console.log(this.routes);
     routes.forEach((route) => {
+      this.definitions.push(route);
       const exists = this.routes.some((r) => r.id === route.id);
 
       if (exists) {
@@ -24,6 +28,10 @@ class RouteRegistry {
 
   getRoutes() {
     return this.routes;
+  }
+
+  getDefinitions() {
+    return this.definitions;
   }
 }
 

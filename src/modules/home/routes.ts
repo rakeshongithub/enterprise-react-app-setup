@@ -10,9 +10,12 @@ const homeRoutes = [
       title: "Home",
       breadcrumb: "Home",
       layout: DefaultLayout,
+      requiresAuth: true,
+      permissions: ["home:view"],
       nav: {
         label: "Home",
-        order: 1,
+        order: 0,
+        hierarchy: ["General"],
       },
     },
   }),
