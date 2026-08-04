@@ -1,13 +1,17 @@
-import { useBreadcrumbs } from "../../router";
+import { useAuth } from "../../auth";
 
 export default function HomePage() {
-  const breadcrumbs = useBreadcrumbs();
+  const auth = useAuth();
 
   return (
     <div>
-      <h1>Home</h1>
+      <h2>Authenticated :{String(auth.authenticated)}</h2>
 
-      <pre>{JSON.stringify(breadcrumbs, null, 2)}</pre>
+      <pre>{JSON.stringify(auth.user, null, 2)}</pre>
+
+      <button onClick={() => auth.login()}>Login</button>
+
+      <button onClick={() => auth.logout()}>Logout</button>
     </div>
   );
 }

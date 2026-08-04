@@ -1,6 +1,6 @@
 import { Navigate } from "react-router-dom";
 
-import useAuth from "../auth/useAuth";
+import useAuth from "../auth/core/useAuth";
 
 import { type PropsWithChildren } from "react";
 
