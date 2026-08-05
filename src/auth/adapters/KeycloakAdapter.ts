@@ -13,11 +13,31 @@ export default class KeycloakAdapter implements AuthAdapter {
     });
   }
 
-  async initialize() {
+  async initialize(options?: {
+    onAuthenticated?: () => void;
+
+    onLogout?: () => void;
+
+    onTokenExpired?: () => void;
+  }) {
+    this.keycloak.onAuthSuccess = () => {
+      options?.onAuthenticated?.();
+    };
+
+    this.keycloak.onAuthLogout = () => {
+      options?.onLogout?.();
+    };
+
+    this.keycloak.onTokenExpired = () => {
+      options?.onTokenExpired?.();
+    };
+
     return this.keycloak.init({
       onLoad: "check-sso",
 
       pkceMethod: "S256",
+
+      checkLoginIframe: true,
     });
   }
 

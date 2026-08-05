@@ -1,7 +1,11 @@
 import type { AuthState } from "../core";
 
 export interface AuthAdapter {
-  initialize(): Promise<boolean>;
+  initialize(options?: {
+    onAuthenticated?: () => void;
+    onLogout?: () => void;
+    onTokenExpired?: () => void;
+  }): Promise<boolean>;
 
   login(): Promise<void>;
 
