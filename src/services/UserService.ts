@@ -1,4 +1,4 @@
-import BaseApiService from "../api/BaseApiService";
+import BaseApiService from '../api/BaseApiService';
 
 export interface User {
   id: string;
@@ -8,7 +8,7 @@ export interface User {
 
 class UserService extends BaseApiService {
   getUsers() {
-    return this.get<User[]>("/users");
+    return this.get<User[]>('/users');
   }
 
   getUser(id: string) {
@@ -16,7 +16,7 @@ class UserService extends BaseApiService {
   }
 
   searchUsers(search: string, page: number) {
-    return this.get<User[]>("/users", {
+    return this.get<User[]>('/users', {
       params: {
         search,
 
@@ -26,7 +26,7 @@ class UserService extends BaseApiService {
   }
 
   createUser(user: User) {
-    return this.post<User>("/users", user);
+    return this.post<User>('/users', user);
   }
 
   updateUser(id: string, user: User) {

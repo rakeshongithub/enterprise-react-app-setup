@@ -1,5 +1,5 @@
-import { type ReactNode } from "react";
-import type { RouteInfo } from "../core/RouteInfo";
+import { type ReactNode } from 'react';
+import type { RouteInfo } from '../core/RouteInfo';
 
 export interface NavigationItem {
   id: string;

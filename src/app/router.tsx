@@ -1,5 +1,5 @@
-import { registerModules } from "./registerModules";
-import { RouteProvider } from "../router";
+import { registerModules } from './registerModules';
+import { RouteProvider } from '../router';
 
 registerModules();
 

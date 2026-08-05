@@ -1,4 +1,4 @@
-import AuthManager from "./AuthManager";
+import AuthManager from './AuthManager';
 
 class AuthService {
   private manager?: AuthManager;
@@ -9,7 +9,7 @@ class AuthService {
 
   getManager() {
     if (!this.manager) {
-      throw new Error("AuthManager not initialized.");
+      throw new Error('AuthManager not initialized.');
     }
 
     return this.manager;

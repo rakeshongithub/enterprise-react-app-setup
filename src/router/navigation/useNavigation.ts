@@ -1,11 +1,11 @@
-import { useContext } from "react";
+import { useContext } from 'react';
 
-import NavigationContext from "./NavigationContext";
+import NavigationContext from './NavigationContext';
 
 export default function useNavigation() {
   const context = useContext(NavigationContext);
 
-  if (!context) throw new Error("Missing NavigationProvider");
+  if (!context) throw new Error('Missing NavigationProvider');
 
   return context;
 }

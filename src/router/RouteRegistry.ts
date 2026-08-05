@@ -1,6 +1,6 @@
-import { lazy } from "react";
+import { lazy } from 'react';
 
-import { type ManagedRoute, type RouteDefinition } from "./types";
+import { type ManagedRoute, type RouteDefinition } from './types';
 
 class RouteRegistry {
   private readonly routes: ManagedRoute[] = [];

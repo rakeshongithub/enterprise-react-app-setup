@@ -1,4 +1,4 @@
-import { type RouteMeta } from "../types";
+import { type RouteMeta } from '../types';
 
 export interface RouteInfo {
   id: string;

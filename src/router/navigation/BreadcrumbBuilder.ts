@@ -1,11 +1,8 @@
-import { type Breadcrumb } from "./Breadcrumb";
-import { type NavigationItem } from "./types";
+import { type Breadcrumb } from './Breadcrumb';
+import { type NavigationItem } from './types';
 
 export default class BreadcrumbBuilder {
-  build(
-    node: NavigationItem | undefined,
-    lookup: Map<string, NavigationItem>,
-  ): Breadcrumb[] {
+  build(node: NavigationItem | undefined, lookup: Map<string, NavigationItem>): Breadcrumb[] {
     if (!node) {
       return [];
     }

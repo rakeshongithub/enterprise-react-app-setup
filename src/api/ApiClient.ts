@@ -1,7 +1,7 @@
-import HttpClient from "./HttpClient";
-import AuthService from "../auth/core/AuthService";
-import { type ApiRequestOptions } from "./types";
-import { UnauthorizedError } from "./errors";
+import HttpClient from './HttpClient';
+import AuthService from '../auth/core/AuthService';
+import { type ApiRequestOptions } from './types';
+import { UnauthorizedError } from './errors';
 
 export default class ApiClient {
   private readonly http = new HttpClient();
@@ -13,10 +13,10 @@ export default class ApiClient {
 
     const headers = new Headers(options.headers);
 
-    headers.set("Content-Type", "application/json");
+    headers.set('Content-Type', 'application/json');
 
     if (!options.skipAuth && state.session?.accessToken) {
-      headers.set("Authorization", `Bearer ${state.session.accessToken}`);
+      headers.set('Authorization', `Bearer ${state.session.accessToken}`);
     }
 
     try {

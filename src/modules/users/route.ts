@@ -1,21 +1,21 @@
-import DefaultLayout from "../../layouts/DefaultLayout";
-import { defineRoute } from "../../router";
+import DefaultLayout from '../../layouts/DefaultLayout';
+import { defineRoute } from '../../router';
 
 const usersRoutes = [
   defineRoute({
-    id: "users",
-    path: "/users",
-    component: () => import("./UsersPage"),
+    id: 'users',
+    path: '/users',
+    component: () => import('./UsersPage'),
     meta: {
-      title: "Users",
-      breadcrumb: "Users",
+      title: 'Users',
+      breadcrumb: 'Users',
       layout: DefaultLayout,
       requiresAuth: true,
-      permissions: ["users:view"],
+      permissions: ['users:view'],
       nav: {
-        label: "Users",
+        label: 'Users',
         order: 2,
-        hierarchy: ["Administration"],
+        hierarchy: ['Administration'],
       },
     },
   }),

@@ -1,11 +1,11 @@
-import { useContext } from "react";
-import { AuthContext } from "./AuthContext";
+import { useContext } from 'react';
+import { AuthContext } from './AuthContext';
 
 export default function useAuth() {
   const context = useContext(AuthContext);
 
   if (!context) {
-    throw new Error("AuthProvider missing.");
+    throw new Error('AuthProvider missing.');
   }
 
   const { manager, state } = context;

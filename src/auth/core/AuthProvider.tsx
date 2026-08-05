@@ -1,14 +1,12 @@
-import { type PropsWithChildren, useEffect, useMemo, useState } from "react";
+import { type PropsWithChildren, useEffect, useMemo, useState } from 'react';
 
-import { AuthContext } from "./AuthContext";
+import { AuthContext } from './AuthContext';
 
-import AuthService from "./AuthService";
+import AuthService from './AuthService';
 
-import { type AuthState } from "./types";
+import { type AuthState } from './types';
 
-export default function AuthProvider({
-  children,
-}: Readonly<PropsWithChildren>) {
+export default function AuthProvider({ children }: Readonly<PropsWithChildren>) {
   const manager = AuthService.getManager();
 
   const [state, setState] = useState<AuthState>(manager.getState());

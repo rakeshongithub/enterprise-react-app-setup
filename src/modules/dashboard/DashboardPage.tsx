@@ -1,4 +1,4 @@
-import { useBreadcrumbs } from "../../router";
+import { useBreadcrumbs } from '../../router';
 
 export default function DashboardPage() {
   const breadcrumbs = useBreadcrumbs();

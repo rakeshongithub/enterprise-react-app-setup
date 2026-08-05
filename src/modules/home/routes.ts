@@ -1,21 +1,21 @@
-import DefaultLayout from "../../layouts/DefaultLayout";
-import { defineRoute } from "../../router";
+import DefaultLayout from '../../layouts/DefaultLayout';
+import { defineRoute } from '../../router';
 
 const homeRoutes = [
   defineRoute({
-    id: "home",
-    path: "/",
-    component: () => import("./HomePage"),
+    id: 'home',
+    path: '/',
+    component: () => import('./HomePage'),
     meta: {
-      title: "Home",
-      breadcrumb: "Home",
+      title: 'Home',
+      breadcrumb: 'Home',
       layout: DefaultLayout,
       requiresAuth: true,
-      permissions: ["home:view"],
+      permissions: ['home:view'],
       nav: {
-        label: "Home",
+        label: 'Home',
         order: 0,
-        hierarchy: ["General"],
+        hierarchy: ['General'],
       },
     },
   }),

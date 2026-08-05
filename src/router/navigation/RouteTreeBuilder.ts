@@ -1,7 +1,7 @@
-import type { ManagedRoute } from "../types";
-import type { RouteInfo } from "../core/RouteInfo";
-import type { NavigationItem } from "./types";
-import type { NavigationState } from "./NavigationState";
+import type { ManagedRoute } from '../types';
+import type { RouteInfo } from '../core/RouteInfo';
+import type { NavigationItem } from './types';
+import type { NavigationState } from './NavigationState';
 
 export default class RouteTreeBuilder {
   build(routes: ManagedRoute[]): NavigationState {
@@ -23,7 +23,7 @@ export default class RouteTreeBuilder {
         hierarchy.forEach((group, index) => {
           const groupId = `navigation-${hierarchy
             .slice(0, index + 1)
-            .join("-")
+            .join('-')
             .toLowerCase()}`;
 
           let node = current.find((x) => x.id === groupId);

@@ -5,7 +5,7 @@ import {
   ServerError,
   UnauthorizedError,
   ValidationError,
-} from "./errors";
+} from './errors';
 
 export default class HttpClient {
   async request<T>(url: string, options: RequestInit): Promise<T> {
@@ -18,7 +18,7 @@ export default class HttpClient {
       try {
         data = await response.json();
 
-        if (data && typeof data === "object" && "message" in data) {
+        if (data && typeof data === 'object' && 'message' in data) {
           message = String((data as { message: unknown }).message);
         }
       } catch {

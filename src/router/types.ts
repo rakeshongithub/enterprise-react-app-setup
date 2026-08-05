@@ -1,9 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import {
-  type ComponentType,
-  type LazyExoticComponent,
-  type ReactNode,
-} from "react";
+import { type ComponentType, type LazyExoticComponent, type ReactNode } from 'react';
 
 /**
  * Lazy imported page module.

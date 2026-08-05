@@ -1,21 +1,21 @@
-import DefaultLayout from "../../layouts/DefaultLayout";
-import { defineRoute } from "../../router";
+import DefaultLayout from '../../layouts/DefaultLayout';
+import { defineRoute } from '../../router';
 
 const dashboardRoutes = [
   defineRoute({
-    id: "dashboard",
-    path: "/dashboard",
-    component: () => import("./DashboardPage"),
+    id: 'dashboard',
+    path: '/dashboard',
+    component: () => import('./DashboardPage'),
     meta: {
-      title: "Dashboard",
-      breadcrumb: "Dashboard",
+      title: 'Dashboard',
+      breadcrumb: 'Dashboard',
       layout: DefaultLayout,
       requiresAuth: true,
-      permissions: ["dashboard:view"],
+      permissions: ['dashboard:view'],
       nav: {
-        label: "Dashboard",
+        label: 'Dashboard',
         order: 1,
-        hierarchy: ["General"],
+        hierarchy: ['General'],
       },
     },
   }),

@@ -1,7 +1,7 @@
-import type { ManagedRoute } from "./types";
-import BlankLayout from "../layouts/BlankLayout";
-import ProtectedRoute from "./ProtectedRoute";
-import LoadingBoundary from "./LoadingBoundary";
+import type { ManagedRoute } from './types';
+import BlankLayout from '../layouts/BlankLayout';
+import ProtectedRoute from './ProtectedRoute';
+import LoadingBoundary from './LoadingBoundary';
 
 interface Props {
   route: ManagedRoute;

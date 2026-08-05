@@ -1,21 +1,21 @@
-import DefaultLayout from "../../layouts/DefaultLayout";
-import { defineRoute } from "../../router";
+import DefaultLayout from '../../layouts/DefaultLayout';
+import { defineRoute } from '../../router';
 
 const rolesRoutes = [
   defineRoute({
-    id: "roles",
-    path: "/roles",
-    component: () => import("./RolesPage"),
+    id: 'roles',
+    path: '/roles',
+    component: () => import('./RolesPage'),
     meta: {
-      title: "Roles",
-      breadcrumb: "Roles",
+      title: 'Roles',
+      breadcrumb: 'Roles',
       layout: DefaultLayout,
       requiresAuth: true,
-      permissions: ["roles:view"],
+      permissions: ['roles:view'],
       nav: {
-        label: "Roles",
+        label: 'Roles',
         order: 1,
-        hierarchy: ["Administration"],
+        hierarchy: ['Administration'],
       },
     },
   }),

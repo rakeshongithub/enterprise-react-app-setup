@@ -1,5 +1,5 @@
-import { createContext } from "react";
-import { type NavigationState } from "./NavigationState";
+import { createContext } from 'react';
+import { type NavigationState } from './NavigationState';
 
 const NavigationContext = createContext<NavigationState>({
   tree: [],

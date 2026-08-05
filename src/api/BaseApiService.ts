@@ -1,12 +1,12 @@
-import { api } from "./index";
-import { type ApiRequestOptions } from "./types";
+import { api } from './index';
+import { type ApiRequestOptions } from './types';
 
 export default abstract class BaseApiService {
   protected get<T>(url: string, options?: ApiRequestOptions) {
     return api.request<T>(url, {
       ...options,
 
-      method: "GET",
+      method: 'GET',
     });
   }
 
@@ -14,7 +14,7 @@ export default abstract class BaseApiService {
     return api.request<T>(url, {
       ...options,
 
-      method: "POST",
+      method: 'POST',
 
       body,
     });
@@ -24,7 +24,7 @@ export default abstract class BaseApiService {
     return api.request<T>(url, {
       ...options,
 
-      method: "PUT",
+      method: 'PUT',
 
       body,
     });
@@ -34,7 +34,7 @@ export default abstract class BaseApiService {
     return api.request<T>(url, {
       ...options,
 
-      method: "PATCH",
+      method: 'PATCH',
 
       body,
     });
@@ -44,7 +44,7 @@ export default abstract class BaseApiService {
     return api.request<T>(url, {
       ...options,
 
-      method: "DELETE",
+      method: 'DELETE',
     });
   }
 }

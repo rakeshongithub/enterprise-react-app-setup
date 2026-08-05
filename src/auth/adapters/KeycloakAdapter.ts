@@ -1,6 +1,6 @@
-import Keycloak from "keycloak-js";
-import { type AuthAdapter } from "./AuthAdapter";
-import { type AuthState } from "../core";
+import Keycloak from 'keycloak-js';
+import { type AuthAdapter } from './AuthAdapter';
+import { type AuthState } from '../core';
 
 export default class KeycloakAdapter implements AuthAdapter {
   private readonly keycloak: Keycloak;
@@ -33,9 +33,9 @@ export default class KeycloakAdapter implements AuthAdapter {
     };
 
     return this.keycloak.init({
-      onLoad: "check-sso",
+      onLoad: 'check-sso',
 
-      pkceMethod: "S256",
+      pkceMethod: 'S256',
 
       checkLoginIframe: true,
     });
@@ -59,8 +59,8 @@ export default class KeycloakAdapter implements AuthAdapter {
 
       user: this.keycloak.authenticated
         ? {
-            id: this.keycloak.subject ?? "",
-            username: this.keycloak.tokenParsed?.preferred_username ?? "",
+            id: this.keycloak.subject ?? '',
+            username: this.keycloak.tokenParsed?.preferred_username ?? '',
             email: this.keycloak.tokenParsed?.email,
             firstName: this.keycloak.tokenParsed?.given_name,
             lastName: this.keycloak.tokenParsed?.family_name,
@@ -70,7 +70,7 @@ export default class KeycloakAdapter implements AuthAdapter {
 
       session: this.keycloak.authenticated
         ? {
-            accessToken: this.keycloak.token ?? "",
+            accessToken: this.keycloak.token ?? '',
             refreshToken: this.keycloak.refreshToken,
             idToken: this.keycloak.idToken,
             expiresAt: this.keycloak.tokenParsed?.exp ?? 0,

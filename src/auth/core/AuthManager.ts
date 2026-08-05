@@ -1,5 +1,5 @@
-import { type AuthAdapter } from "../adapters/AuthAdapter";
-import { type AuthState } from "./types";
+import { type AuthAdapter } from '../adapters/AuthAdapter';
+import { type AuthState } from './types';
 
 type Listener = (state: AuthState) => void;
 

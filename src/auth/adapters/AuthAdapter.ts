@@ -1,4 +1,4 @@
-import type { AuthState } from "../core";
+import type { AuthState } from '../core';
 
 export interface AuthAdapter {
   initialize(options?: {
