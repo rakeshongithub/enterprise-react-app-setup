@@ -94,4 +94,12 @@ export default class AuthManager {
       this.refreshToken();
     }, refreshAt);
   }
+
+  async handleLoginRedirect() {
+    await this.adapter.handleLoginRedirect();
+
+    this.state = this.adapter.getState();
+
+    this.notify();
+  }
 }

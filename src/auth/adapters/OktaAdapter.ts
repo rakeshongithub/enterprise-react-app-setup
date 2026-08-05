@@ -24,7 +24,10 @@ export default class OktaAdapter implements AuthAdapter {
   }
 
   async login() {
-    await this.okta.signInWithRedirect();
+    // await this.okta.signInWithRedirect();
+    await this.okta.signInWithRedirect({
+      originalUri: window.location.pathname,
+    });
   }
 
   async logout() {
@@ -74,5 +77,12 @@ export default class OktaAdapter implements AuthAdapter {
         expiresAt: accessToken.expiresAt,
       },
     };
+  }
+
+  async handleLoginRedirect() {
+    // await this.okta.handleRedirect();
+    const uri = this.okta.getOriginalUri();
+    this.okta.removeOriginalUri();
+    window.history.replaceState({}, "", uri ?? "/");
   }
 }

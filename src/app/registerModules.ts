@@ -5,6 +5,8 @@ import { routeRegistry } from "../router";
 import rolesRoutes from "../modules/roles/route";
 import usersRoutes from "../modules/users/route";
 import userDetailsRoutes from "../modules/userDetails/route";
+import loginCbRoutes from "../modules/login-cb/route";
+import loginPageRoutes from "../auth/loginRoute";
 
 export function registerModules() {
   routeRegistry.register([
@@ -13,5 +15,7 @@ export function registerModules() {
     ...rolesRoutes,
     ...usersRoutes,
     ...userDetailsRoutes,
+    ...loginCbRoutes,
+    ...loginPageRoutes,
   ]);
 }
