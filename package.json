@@ -10,6 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@okta/okta-auth-js": "^8.0.1",
+    "@okta/okta-react": "^6.11.0",
     "axios": "^1.19.0",
     "clsx": "^2.1.1",
     "keycloak-js": "^26.2.4",
