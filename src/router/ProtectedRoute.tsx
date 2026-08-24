@@ -7,9 +7,9 @@ import { type PropsWithChildren } from "react";
 export default function ProtectedRoute({
   children,
 }: Readonly<PropsWithChildren>) {
-  const { isAuthenticated } = useAuth();
+  const { authenticated } = useAuth();
 
-  if (!isAuthenticated) return <Navigate to="/login" replace />;
+  if (!authenticated) return <Navigate to="/login" replace />;
 
   return children;
 }

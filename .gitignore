@@ -24,3 +24,9 @@ dist-ssr
 *.sw?
 
 .slingshot
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.production.local
