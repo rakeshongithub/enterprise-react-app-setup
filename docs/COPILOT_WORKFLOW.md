@@ -8,12 +8,12 @@ For a normal ticket, use this sequence:
 
 1. Run `/plan-ticket` and provide the ticket and acceptance criteria.
 2. Review the plan and answer the Planner's open questions.
-3. Confirm explicitly before invoking the Ticket Implementer.
-4. Confirm explicitly before invoking the Ticket Reviewer.
-5. Confirm explicitly before invoking the Delivery Agent.
+3. Click the Planner's **Send plan to Implementer** handoff.
+4. Click the Implementer's **Request skeptical review** handoff.
+5. Click the Reviewer's **Send findings to Delivery** handoff.
 6. Approve any commit, push, merge, tag, or release action separately and explicitly.
 
-The Planner and Reviewer are read-only. Every handoff asks for confirmation before the next agent begins its work. The Delivery Agent is additionally approval-gated and does not perform delivery actions without separate confirmation.
+The Planner and Reviewer are read-only. Clicking a handoff button approves the next workflow stage. The Delivery Agent is additionally approval-gated and does not perform delivery actions without separate confirmation.
 
 ## The Building Blocks
 
@@ -63,7 +63,7 @@ Use skills when the task matches their description. Agents orchestrate these ski
 
 Use first for a ticket. It may read and search, but cannot edit, install packages, or commit. It returns scope, architecture decisions, acceptance criteria, tests, risks, and open questions.
 
-The plan is not considered approved until you confirm it. The Implementer must ask for confirmation again when the Planner handoff is selected.
+Clicking **Send plan to Implementer** approves the plan for implementation.
 
 ### Ticket Implementer
 
@@ -75,7 +75,7 @@ If implementation reveals a material architecture decision that was not in the p
 
 Use after implementation. It cannot edit files. It looks for bugs, regressions, accessibility failures, incorrect state ownership, type escapes, security issues, and missing tests.
 
-Review findings come first and are ordered by severity. A clean review means no known blocking findings; it does not remove the need for final validation.
+Review findings come first and are ordered by severity. Clicking **Send findings to Delivery** approves delivery validation; it does not approve a commit or release.
 
 ### Delivery Agent
 
