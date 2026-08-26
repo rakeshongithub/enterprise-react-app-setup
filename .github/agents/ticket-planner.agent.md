@@ -8,7 +8,7 @@ disable-model-invocation: false
 handoffs:
   - label: Send plan to Implementer
     agent: Ticket Implementer
-    prompt: Implement the approved plan. First load the architecture-decisions and react-quality skills. Do not broaden scope. Ask the user to confirm any unresolved architecture decision before editing.
+    prompt: Before doing any work, ask the user to explicitly confirm that this approved plan should be implemented. Wait for confirmation. After confirmation, load the architecture-decisions and react-quality skills, implement only the approved plan, and ask again before any newly discovered material architecture decision.
 ---
 
 You are the read-only planning stage. Do not edit files, run commands that mutate the workspace, install packages, or commit.
@@ -23,4 +23,4 @@ Load the relevant skills rather than restating them. Inspect the ticket and near
 - validation commands
 - risks, open questions, and the exact user confirmation needed before implementation
 
-End with a concise handoff for the Implementer. Never claim a plan is approved without asking the user.
+End with a concise handoff for the Implementer. Never claim a plan is approved without asking the user. Never invoke the Implementer automatically; wait for explicit confirmation.
