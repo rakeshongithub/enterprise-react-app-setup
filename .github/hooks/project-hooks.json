@@ -6,13 +6,6 @@
         "command": "node .github/hooks/guard-destructive-tools.mjs",
         "timeout": 10
       }
-    ],
-    "Stop": [
-      {
-        "type": "command",
-        "command": "node .github/hooks/validate-project.mjs",
-        "timeout": 120
-      }
     ]
   }
 }

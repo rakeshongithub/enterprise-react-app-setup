@@ -5,36 +5,44 @@
  * It provides a centralized, declarative way to manage mock endpoints.
  */
 
-import type { HttpHandler } from "msw";
-import type { User } from "../services/UserService";
+import type { User } from '../services/UserService'
+
+export type MockJsonValue = string | number | boolean | null | object
+
+export type MockResponseParams = {
+  [key: string]: unknown
+  body?: unknown
+  cookies?: Record<string, string>
+  headers?: Record<string, string>
+}
 
 /**
  * Mock response configuration for an endpoint
  */
 export interface MockEndpointConfig {
   /** HTTP method (GET, POST, PUT, DELETE, PATCH) */
-  method: "GET" | "POST" | "PUT" | "DELETE" | "PATCH";
+  method: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH'
 
   /** API endpoint path (e.g., '/users', '/users/:id') */
-  path: string;
+  path: string
 
   /** Whether this endpoint should be mocked (true) or use real API (false) */
-  enabled: boolean;
+  enabled: boolean
 
   /** Mock response data or a function that returns response data */
-  response?: unknown | ((params?: Record<string, unknown>) => unknown);
+  response?: MockJsonValue | ((params?: MockResponseParams) => unknown)
 
   /** HTTP status code for the mock response (default: 200) */
-  status?: number;
+  status?: number
 
   /** Response delay in milliseconds (simulates network latency) */
-  delay?: number;
+  delay?: number
 
   /** Custom response headers */
-  headers?: Record<string, string>;
+  headers?: Record<string, string>
 
   /** Description of what this mock does (for documentation) */
-  description?: string;
+  description?: string
 }
 
 /**
@@ -44,26 +52,26 @@ export interface MockEndpointConfig {
 export const mockData = {
   users: [
     {
-      id: "1",
-      firstName: "John",
-      lastName: "Doe",
+      id: '1',
+      firstName: 'John',
+      lastName: 'Doe',
     },
     {
-      id: "2",
-      firstName: "Jane",
-      lastName: "Smith",
+      id: '2',
+      firstName: 'Jane',
+      lastName: 'Smith',
     },
     {
-      id: "3",
-      firstName: "Bob",
-      lastName: "Johnson",
+      id: '3',
+      firstName: 'Bob',
+      lastName: 'Johnson',
     },
   ] as User[],
 
   // Add more mock data collections here
   // products: [...],
   // orders: [...],
-};
+}
 
 /**
  * Mock endpoint configurations
@@ -79,97 +87,97 @@ export const mockData = {
  */
 export const mockEndpoints: MockEndpointConfig[] = [
   {
-    method: "GET",
-    path: "/users",
+    method: 'GET',
+    path: '/users',
     enabled: true,
     response: mockData.users,
     delay: 500, // Simulate 500ms network delay
-    description: "Get all users",
+    description: 'Get all users',
   },
   {
-    method: "GET",
-    path: "/users/:id",
+    method: 'GET',
+    path: '/users/:id',
     enabled: true,
     response: (params) => {
-      const userId = params?.id as string;
-      const user = mockData.users.find((u) => u.id === userId);
+      const userId = params?.id as string
+      const user = mockData.users.find((u) => u.id === userId)
 
       if (!user) {
         return {
-          error: "User not found",
+          error: 'User not found',
           status: 404,
-        };
+        }
       }
 
-      return user;
+      return user
     },
     delay: 300,
-    description: "Get user by ID",
+    description: 'Get user by ID',
   },
   {
-    method: "POST",
-    path: "/users",
+    method: 'POST',
+    path: '/users',
     enabled: true,
     response: (params) => {
-      const newUser = params?.body as User;
+      const newUser = params?.body as User
       const userWithId = {
         ...newUser,
         id: String(mockData.users.length + 1),
-      };
-      mockData.users.push(userWithId);
-      return userWithId;
+      }
+      mockData.users.push(userWithId)
+      return userWithId
     },
     status: 201,
     delay: 400,
-    description: "Create new user",
+    description: 'Create new user',
   },
   {
-    method: "PUT",
-    path: "/users/:id",
+    method: 'PUT',
+    path: '/users/:id',
     enabled: true,
     response: (params) => {
-      const userId = params?.id as string;
-      const updates = params?.body as Partial<User>;
-      const userIndex = mockData.users.findIndex((u) => u.id === userId);
+      const userId = params?.id as string
+      const updates = params?.body as Partial<User>
+      const userIndex = mockData.users.findIndex((u) => u.id === userId)
 
       if (userIndex === -1) {
         return {
-          error: "User not found",
+          error: 'User not found',
           status: 404,
-        };
+        }
       }
 
       mockData.users[userIndex] = {
         ...mockData.users[userIndex],
         ...updates,
-      };
+      }
 
-      return mockData.users[userIndex];
+      return mockData.users[userIndex]
     },
     delay: 400,
-    description: "Update user by ID",
+    description: 'Update user by ID',
   },
   {
-    method: "DELETE",
-    path: "/users/:id",
+    method: 'DELETE',
+    path: '/users/:id',
     enabled: true,
     response: (params) => {
-      const userId = params?.id as string;
-      const userIndex = mockData.users.findIndex((u) => u.id === userId);
+      const userId = params?.id as string
+      const userIndex = mockData.users.findIndex((u) => u.id === userId)
 
       if (userIndex === -1) {
         return {
-          error: "User not found",
+          error: 'User not found',
           status: 404,
-        };
+        }
       }
 
-      mockData.users.splice(userIndex, 1);
-      return { success: true };
+      mockData.users.splice(userIndex, 1)
+      return { success: true }
     },
     status: 204,
     delay: 300,
-    description: "Delete user by ID",
+    description: 'Delete user by ID',
   },
 
   // Example: Disabled endpoint (will use real API)
@@ -179,7 +187,7 @@ export const mockEndpoints: MockEndpointConfig[] = [
   //   enabled: false,
   //   description: 'Get all products - uses real API',
   // },
-];
+]
 
 /**
  * Environment-specific mock configurations
@@ -187,10 +195,10 @@ export const mockEndpoints: MockEndpointConfig[] = [
  */
 export const mockConfig = {
   /** Global enable/disable for all mocks */
-  enabled: import.meta.env.VITE_ENABLE_MSW === "true",
+  enabled: import.meta.env.VITE_ENABLE_MSW === 'true',
 
   /** API base URL */
-  baseUrl: import.meta.env.VITE_API_BASE_URL || "",
+  baseUrl: import.meta.env.VITE_API_BASE_URL || '',
 
   /** Default delay for all mocked requests (ms) */
   defaultDelay: 300,
@@ -199,5 +207,5 @@ export const mockConfig = {
   logRequests: true,
 
   /** Behavior for unhandled requests: 'bypass' | 'warn' | 'error' */
-  onUnhandledRequest: "bypass" as const,
-};
+  onUnhandledRequest: 'bypass' as const,
+}

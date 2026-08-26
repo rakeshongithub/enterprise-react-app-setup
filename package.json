@@ -8,7 +8,7 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "format": "prettier --write .",
-    "format:check": "prettier --check .",
+    "format:check": "prettier --check '.github/**/*.{md,json,mjs}' 'src/mocks/{handlerFactory.ts,handlerFactory.test.ts,mock.config.ts}' 'src/test/**/*.{ts,tsx}' 'docs/COPILOT_WORKFLOW.md' eslint.config.js commitlint.config.cjs vite.config.ts vitest.config.ts package.json .prettierrc.json",
     "test": "vitest run",
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",

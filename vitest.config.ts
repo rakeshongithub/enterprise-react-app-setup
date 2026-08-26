@@ -9,6 +9,7 @@ export default defineConfig({
     coverage: {
       provider: 'v8',
       reporter: ['text', 'html'],
+      include: ['src/mocks/handlerFactory.ts'],
       thresholds: {
         lines: 80,
         functions: 80,

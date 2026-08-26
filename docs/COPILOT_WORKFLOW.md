@@ -95,9 +95,9 @@ Include the ticket, acceptance criteria, relevant constraints, and any previous 
 
 ## Hooks
 
-Hooks run automatically through [project-hooks.json](../.github/hooks/project-hooks.json). The `PreToolUse` hook checks commands before they run and asks for confirmation when a command may discard work or rewrite shared history. The `Stop` hook runs `lint`, `format:check`, `test:coverage`, and `build` before an agent session can finish.
+Hooks run automatically through [project-hooks.json](../.github/hooks/project-hooks.json). The `PreToolUse` hook checks commands before they run and asks for confirmation when a command may discard work or rewrite shared history.
 
-The hook is a final-session guard, not a replacement for review or commit checks. It can be expensive because it runs the full suite. Never put secrets in hook configuration or scripts.
+Full validation belongs in the Delivery Agent procedure rather than a global `Stop` hook. This allows writable agents to repair lint, typecheck, test, and build failures, while Delivery still runs the complete validation before handoff. Never put secrets in hook configuration or scripts.
 
 Use `.husky/` for Git commit enforcement. Use `.github/hooks/` for Copilot lifecycle behavior.
 
